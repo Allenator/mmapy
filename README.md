@@ -112,7 +112,7 @@ In compliance with the need for data visualization and graphical operations, the
 D2Plot = 'StreamPlot[{Cos[x], Tan[x]}, {x, -3, 3}, {y, -3, 3}]'
 D3Plot = 'RegionPlot3D[x^2 - y^2*z^2 > 0, {x, -2, 2}, {y, -2, 2}, {z, -2, 2}]'
 
-M.g( 'GraphicsRow[{' + D2Plot + ',' + D3Plot + '}, ImageSize -> 500]' )
+M.g( 'GraphicsRow[{' + D2Plot + ',' + D3Plot + '}, ImageSize -> ImageSize -> {Automatic, 300}]' )
 ```
 
 > ![2-D and 3-D Plotting](documentation-images/2D+3D.png)
