@@ -106,20 +106,29 @@ print('You can buy', int(conv) // 15, "bagels!")
 
 In compliance with the need for data visualization and graphical operations, the ***g*** variation is developed to channel graphics output from the *Mathematica* kernel to the *IPython*/*Jupyter* frontend. Take special note that *Mathematica* is designed to have its frontend handle all rendering operations, thus **a working display must be available at the remote machine**. A few examples are given below to illustrate the use of ***mmapy.g*** in various scenarios.
 
-2-D and 3-D Plotting:
+2-D and 3-D plotting:
 
 ```python
+# Create a 2-D stream plot and a 3-D region plot
 D2Plot = 'StreamPlot[{Cos[x], Tan[x]}, {x, -3, 3}, {y, -3, 3}]'
 D3Plot = 'RegionPlot3D[x^2 - y^2*z^2 > 0, {x, -2, 2}, {y, -2, 2}, {z, -2, 2}]'
 
-M.g( 'GraphicsRow[{' + D2Plot + ',' + D3Plot + '}, ImageSize -> ImageSize -> {Automatic, 300}]' )
+M.g( 'GraphicsRow[{' + D2Plot + ',' + D3Plot + '}, ImageSize -> {Automatic, 300}]' )
 ```
 
-> ![2-D and 3-D Plotting](documentation-images/2D+3D.png)
+> ![2-D and 3-D plotting](documentation-images/2D+3D.png)
 
-Image processing:
+Image processing/preparation:
 
+```python
+imgPath = 'documentation-images/landsat.jpg'
+cmdImport = 'img = Rasterize[Import[' + imgPath + '], ImageSize -> 1000];'
+cmdMesh = 'mesh = ImageMesh[img];'
+comdComp = []
 
+```
+
+> ![Image processing/preparation](documentation-images/landsat-output.png)
 
 ## Methodology
 
