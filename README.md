@@ -14,7 +14,7 @@ The ***mmapy*** package is designed to bring interoperability between *Python* (
 
 ### Importing ***mmapy***
 
-As long as ***mmapy*** is properly deployed in *Python*'s "site-packages" directory, import can be done with the following line.
+As long as ***mmapy*** is properly deployed, import can be done with the following line.
 
 ```python
 import mmapy
@@ -104,7 +104,7 @@ print('You can buy', int(conv) // 15, "bagels!")
 
 #### ***mmapy.g()*** -- Producing graphics output
 
-In compliance with the need for data visualization and graphical operations, the ***g*** variation is developed to channel graphics output from the *Mathematica* kernel to the *IPython*/*Jupyter* frontend. Take special note that *Mathematica* is designed to have its frontend handle all rendering operations, thus **a working display must be available at the remote machine**. A few examples are given below to illustrate the use of ***mmapy.g*** in various scenarios.
+In compliance with the need for data visualization and graphical operations, the ***g*** variation is developed to channel graphics output from the *Mathematica* kernel to the *IPython*/*Jupyter* frontend. Take special note that *Mathematica* is designed to have its frontend handle all rendering operations, thus **a working display must be available on the remote machine**. A few examples are given below to illustrate the use of ***mmapy.g*** in various scenarios.
 
 2-D and 3-D plotting:
 
@@ -122,13 +122,19 @@ Image processing/preparation:
 
 ```python
 imgPath = 'documentation-images/landsat.jpg'
+
 cmdImport = 'img = Rasterize[Import[' + imgPath + '], ImageSize -> 1000];'
 cmdMesh = 'mesh = ImageMesh[img];'
-comdComp = []
+cmdComp = 'GraphicsRow[{img, HighlightImage[img, mesh]}, ImageSize -> {Automatic, 300}, Spacings -> 0, Background -> None];'
 
+M.g(cmdImport + cmdMesh + cmdComp)
 ```
 
 > ![Image processing/preparation](documentation-images/landsat-output.png)
+
+### Using *Mathematica*'s ***Print*** function
+
+***mmapy*** is designed to channel *Mathematica* ***Print*** 
 
 ## Methodology
 
